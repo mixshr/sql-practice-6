@@ -7,30 +7,30 @@
 
 #### The creation code
 ``` sql
-create table Scientists (
+CREATE TABLE scientists (
   SSN int,
-  Name Char(30) not null,
-  Primary Key (SSN)
+  Name CHAR(30) NOT NULL,
+  PRIMARY KEY (SSN)
 );
 
-Create table Projects (
-  Code Char(4),
-  Name Char(50) not null,
-  Hours int,
-  Primary Key (Code)
+CREATE TABLE projects (
+  Code CHAR(4),
+  Name CHAR(50) NOT NULL,
+  Hours INT,
+  PRIMARY KEY (Code)
 );
 	
-create table AssignedTo (
-  Scientist int not null,
-  Project char(4) not null,
-  Primary Key (Scientist, Project),
-  Foreign Key (Scientist) references Scientists (SSN),
-  Foreign Key (Project) references Projects (Code)
+CREATE TABLE AssignedTo (
+  Scientist INT NOT NULL,
+  Project CHAR(4) NOT NULL,
+  PRIMARY KEY (Scientist, Project),
+  FOREIGN KEY (Scientist) REFERENCES scientists (SSN),
+  FOREIGN KEY (Project) REFERENCES projects (Code)
 );
 ```
 #### Sample datase
 ``` sql
- INSERT INTO Scientists(SSN,Name) 
+ INSERT INTO scientists(SSN, Name) 
   VALUES (123234877,'Michael Rogers'),
          (152934485,'Anand Manikutty'),
          (222364883, 'Carol Smith'),
@@ -44,7 +44,7 @@ create table AssignedTo (
          (845657245,'Elizabeth Doe'),
          (845657246,'Kumar Swamy');
 
- INSERT INTO Projects ( Code,Name,Hours)
+ INSERT INTO projects (Code, Name, Hours)
  VALUES ('AeH1','Winds: Studying Bernoullis Principle', 156),
         ('AeH2','Aerodynamics and Bridge Design',189),
         ('AeH3','Aerodynamics and Gas Mileage', 256),
@@ -60,7 +60,7 @@ create table AssignedTo (
         ('Che1','A Silver-Cleaning Battery', 545),
         ('Che2','A Soluble Separation Solution', 778);
 
- INSERT INTO AssignedTo ( Scientist, Project)
+ INSERT INTO assignedTo (scientist, project)
    VALUES (123234877,'AeH1'),
           (152934485,'AeH3'),
           (222364883,'Ast3'),	   

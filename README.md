@@ -20,7 +20,7 @@ CREATE TABLE projects (
   PRIMARY KEY (Code)
 );
 	
-CREATE TABLE AssignedTo (
+CREATE TABLE assignedTo (
   Scientist INT NOT NULL,
   Project CHAR(4) NOT NULL,
   PRIMARY KEY (Scientist, Project),
@@ -28,7 +28,7 @@ CREATE TABLE AssignedTo (
   FOREIGN KEY (Project) REFERENCES projects (Code)
 );
 ```
-#### Sample datase
+#### Sample database
 ``` sql
  INSERT INTO scientists(SSN, Name) 
   VALUES (123234877,'Michael Rogers'),
@@ -78,5 +78,5 @@ CREATE TABLE AssignedTo (
 1. List all the scientists' names, their projects' names, and the hours worked by that scientist on each project, in alphabetical order of project name, then scientist name.
 
 ``` sql
-1. SELECT S.Name, P.Name, P.Hours FROM Scientists S INNER JOIN AssignedTo A ON S.SSN=A.Scientist INNER JOIN Projects P ON A.Project=P.Code ORDER BY P.Name ASC, S.Name ASC;
+1. SELECT S.Name, P.Name, P.Hours FROM Scientists AS S INNER JOIN AssignedTo AS A ON S.SSN = A.Scientist INNER JOIN Projects AS P ON A.Project = P.Code ORDER BY P.Name ASC, S.Name ASC;
 ```
